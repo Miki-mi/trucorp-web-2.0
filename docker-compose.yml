@@ -1,0 +1,36 @@
+version: '3'
+services:
+  web:
+    image: trucorp-web-2.0
+    build: ./web-2.0
+    container_name: trucorp-web-2.0
+    ports:
+    - '7000:80'  
+    networks:
+            net:
+                ipv4_address: 172.23.0.4
+ 
+  db:
+    image: trucorp-db-2.0
+    build: ./database-2.0
+    container_name: trucorp-db-2.0
+    volumes:
+    - ./database-2.0/:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_DATABASE: Trucorp
+      MYSQL_ROOT_PASSWORD: notbad
+      
+    ports:
+      - '3306:3306'
+       
+    networks:
+            net:
+                ipv4_address: 172.23.0.6
+
+networks:
+    net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.23.0.0/16
+
