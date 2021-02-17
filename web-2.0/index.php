@@ -1,5 +1,4 @@
 <?php 
-		
 		$conn = mysqli_connect("172.23.0.6", "root", "notbad","Trucorp");
 		$count = 0;
 		
