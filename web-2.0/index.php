@@ -1,13 +1,7 @@
-<html>
-<head>
-	<title>myWeb</title>
-</head>
-
-<body>
-	<h1>Welcome</h1><br>
-	<?php 
+<?php 
 		
 		$conn = mysqli_connect("172.23.0.6", "root", "notbad","Trucorp");
+		$count = 0;
 		
 		if(!$conn)
 		{
@@ -36,15 +30,13 @@
 				echo "<td>" . $row['Nama'] . "</td>";
 				echo "<td>" . $row['Kantor'] . "</td>";
 				echo "<tr>";
+				$count = $count + 1;
 			}
 			
 		echo "</table>";
+		echo "<br> Total users in database: " . $count; 
 		
 		} else {
 			echo "0 results";
 		}
 	?>
-	
-	
-</body>
-<html>
